@@ -1,0 +1,12 @@
+nav {
+  position: fixed;
+  z-index: 999;
+  right: 0;
+  background-color: black;
+  padding: 10px;
+  line-height: 1.5;
+}
+
+nav a {
+  color: white;
+}

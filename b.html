@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="UTF-8">
+    <link rel="icon" href="./images/AMA-bottom.png" type="image/x-icon">
+    <title>BB-VERSION</title>
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
+    <link rel="stylesheet" href="./css/index.css">
+    <script src="./js/index.js"></script>
+  </head>
+  <body>
+    <nav>
+      <a href="./">BB-VERSION</a><br>
+      <a href="./b.html">B-VERSION</a><br>
+      <a href="./w.html">W-VERSION</a><br>
+      <a href="./ww.html">WW-VERSION</a><br>
+    </nav>
+    <!-- targetIndex: 0 是下半身 -->
+    <a-scene
+      mindar-image="imageTargetSrc: ./targets/b.mind; maxTrack: 2; filterMinCF:0.001; filterBeta: 0.001"
+      color-space="sRGB"
+      renderer="colorManagement: true, physicallyCorrectLights"
+      vr-mode-ui="enabled: false"
+      device-orientation-permission-ui="enabled: false"
+    >
+      <a-assets>
+        <img id="top" src="./images/AMA-top.png" />
+        <img id="bottom" src="./images/AMA-bottom.png" />
+      </a-assets>
+
+      <a-camera
+        position="0 0 0"
+        look-controls="enabled: false"
+        cursor="fuse: false; rayOrigin: mouse"
+        raycaster="far: 10000; objects: .clickable;"
+      ></a-camera>
+
+      <a-entity mindar-image-target="targetIndex: 0">
+        <a-plane
+          id="bottom-plane"
+          src="#bottom"
+          position="0 0 0"
+          height="1"
+          width="1"
+          rotation="0 0 0"
+          material="alpha-test: 0.5; transparent: true"
+          class="clickable"
+        ></a-plane>
+      </a-entity>
+      <a-entity mindar-image-target="targetIndex: 1">
+        <a-plane
+          id="top-plane"
+          src="#top"
+          position="0 0 0"
+          height="1"
+          width="1"
+          rotation="0 0 0"
+          material="alpha-test: 0.5; transparent: true"
+          class="clickable"
+        ></a-plane>
+      </a-entity>
+    </a-scene>
+  </body>
+</html>
